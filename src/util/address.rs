@@ -675,8 +675,8 @@ impl Address {
     /// alphanumeric mode, which is 45% more compact than the normal byte mode."
     pub fn to_qr_uri(&self) -> String {
         let schema = match self.payload {
-            Payload::WitnessProgram { .. } => "BITCOIN",
-            _ => "bitcoin",
+            Payload::WitnessProgram { .. } => "GLOBALBOOST",
+            _ => "globalboost",
         };
         format!("{}:{:#}", schema, self)
     }
@@ -760,9 +760,9 @@ impl fmt::Display for Address {
             Network::Testnet | Network::Signet | Network::Regtest => SCRIPT_ADDRESS_PREFIX_TEST,
         };
         let bech32_hrp = match self.network {
-            Network::Bitcoin => "bc",
-            Network::Testnet | Network::Signet => "tb",
-            Network::Regtest => "bcrt",
+            Network::Bitcoin => "gb",
+            Network::Testnet | Network::Signet => "tg",
+            Network::Regtest => "gbrt",
         };
         let encoding = AddressEncoding {
             payload: &self.payload,
